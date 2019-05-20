@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:background="@drawable/ic_launcher_background"
+        android:gravity="center"
+        android:text="反馈"
+        android:textColor="@color/colorAccent"
+        android:textSize="40sp"></TextView>
+
+    <EditText
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="424dp"
+        android:layout_marginTop="40dp"
+        android:gravity="left|top">
+    </EditText>
+
+    <Button
+        android:id="@+id/send"
+        android:textSize="36sp"
+        android:text="发送"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        >
+    </Button>
+
+</TableLayout>

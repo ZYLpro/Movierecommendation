@@ -1,0 +1,32 @@
+<TableLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/colorPrimary">
+    <EditText
+        android:layout_marginTop="50dp"
+        android:id="@+id/用户名"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_marginTop="50dp"
+        android:id="@+id/密码"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_marginTop="50dp"
+        android:id="@+id/性别"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_marginTop="50dp"
+        android:id="@+id/年龄"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_marginTop="50dp"
+        android:id="@+id/居住地"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</TableLayout>

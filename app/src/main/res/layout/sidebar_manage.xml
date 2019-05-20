@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="设置"
+        android:textColor="#000"
+        android:textSize="40sp">
+    </TextView>
+    <Button
+        android:id="@+id/change_information"
+        android:layout_marginTop="020dp"
+        android:text="更改信息"
+        android:textSize="32dp"
+        android:gravity="left"/>
+    <Button
+        android:id="@+id/change_theme"
+        android:layout_marginTop="020dp"
+        android:text="更改主题"
+        android:textSize="32dp"
+        android:gravity="left"/>
+    <Button
+        android:id="@+id/account_manage"
+        android:layout_marginTop="020dp"
+        android:text="切换账户"
+        android:textSize="32dp"
+        android:gravity="left"/>
+    <Button
+        android:id="@+id/quit_account"
+        android:layout_marginTop="020dp"
+        android:text="退出APP"
+        android:textSize="32dp"
+        android:gravity="left"/>
+</TableLayout>
