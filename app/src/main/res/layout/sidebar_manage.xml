@@ -32,10 +32,4 @@
         android:text="切换账户"
         android:textSize="32dp"
         android:gravity="left"/>
-    <Button
-        android:id="@+id/quit_account"
-        android:layout_marginTop="020dp"
-        android:text="退出APP"
-        android:textSize="32dp"
-        android:gravity="left"/>
 </TableLayout>

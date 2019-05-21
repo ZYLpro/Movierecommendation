@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textSize="40dp"
+        android:text="请选择主题"
+        android:gravity="center"/>
+    <RadioGroup
+        android:id="@+id/gender"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <RadioButton
+            android:layout_marginTop="100dp"
+            android:textSize="36dp"
+            android:id="@+id/day"
+            android:checked="true"
+            android:text="白天"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:layout_marginTop="50dp"
+            android:textSize="36dp"
+            android:id="@+id/night"
+            android:text="黑夜"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RadioGroup>
+</TableLayout>
