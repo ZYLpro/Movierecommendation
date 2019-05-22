@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer-array name="age" translatable="false">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </integer-array>
-
+    <string-array name="age" translatable="false">
+        <item>"under 18"</item>
+        <item>18-24</item>
+        <item>25-34</item>
+        <item>35-44</item>
+        <item>45-49</item>
+        <item>50-55</item>
+        <item>56+</item>
+    </string-array>
 </resources>
