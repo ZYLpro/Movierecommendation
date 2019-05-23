@@ -57,10 +57,12 @@
         <TextView
             android:text="年龄"
             android:layout_width="match_parent"/>
+
         <Spinner
             android:id="@+id/agespinner"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:entries="@array/age">
             <!--android:entries="@array/age"-->
 
         </Spinner>
@@ -69,11 +71,30 @@
         <TextView
             android:text="居住地"
             android:layout_width="match_parent"/>
-        <EditText
-            android:id="@+id/居住地"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </EditText>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <Spinner
+                android:id="@+id/s1"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown">
+            </Spinner>
+            <Spinner
+                android:id="@+id/s2"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"></Spinner>
+            <Spinner
+                android:id="@+id/s3"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"></Spinner>
+        </LinearLayout>
     </TableRow>
 
     <Button

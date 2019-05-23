@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,14 +16,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.movierecommendation.R;
 
+import org.xmlpull.v1.XmlPullParserException;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import global_variable.Myapplication;
+import sidebar.geographical_choice.City;
+import sidebar.geographical_choice.District;
+import sidebar.geographical_choice.Province;
 
 public class Sb_manage_changeavatar extends Activity {
     private ImageView mImage;
@@ -33,24 +44,69 @@ public class Sb_manage_changeavatar extends Activity {
     protected static Uri tempUri;
     private static final int CROP_SMALL_PICTURE = 2;
 
+    private Spinner spinner1,spinner2,spinner3;
+    private Province province = null;
+    private List<Province> list = new ArrayList<Province>();
+    ArrayAdapter<Province> arrayAdapter1;
+    ArrayAdapter<City> arrayAdapter2;
+    ArrayAdapter<District>arrayAdapter3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sidebar_manage_message);
         initUI();
         initListeners();
+
         Button button = findViewById(R.id.确认修改);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText editText = findViewById(R.id.昵称);
+                String name = editText.getText().toString();
+                /*Myapplication myapp = (Myapplication)Sb_manage_changeavatar.this.getApplication();
+                myapp.setname(name);*/
                 Sb_manage_changeavatar.this.finish();
             }
         });
-        /*Resources res =getResources();
-        int[] agearray = res.getIntArray(R.array.age);
-        for (int i = 0;i<200;i++){
-            agearray[i] += i;
-        }*/
+
+        spinner3 = (Spinner)findViewById(R.id.s3);
+        spinner2 = (Spinner)findViewById(R.id.s2);
+        spinner1 = (Spinner)findViewById(R.id.s1);
+        list= parser();
+        arrayAdapter1 = new ArrayAdapter<Province>(Sb_manage_changeavatar.this,R.layout.support_simple_spinner_dropdown_item,list);
+        arrayAdapter2 = new ArrayAdapter<City>(Sb_manage_changeavatar.this,R.layout.support_simple_spinner_dropdown_item,list.get(0).getCitys());
+        arrayAdapter3 = new ArrayAdapter<District>(Sb_manage_changeavatar.this,R.layout.support_simple_spinner_dropdown_item,list.get(0).getCitys().get(0).getDistricts());
+        spinner1.setAdapter(arrayAdapter1);
+        spinner1.setSelection(0, true);
+        spinner2.setAdapter(arrayAdapter2);
+        spinner2.setSelection(0, true);
+        spinner3.setAdapter(arrayAdapter3);
+        spinner3.setSelection(0, true);
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                province = list.get(position);
+                arrayAdapter2 = new ArrayAdapter<City>(Sb_manage_changeavatar.this, R.layout.support_simple_spinner_dropdown_item, list.get(position).getCitys());
+                spinner2.setAdapter(arrayAdapter2);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                arrayAdapter3 = new ArrayAdapter<District>(Sb_manage_changeavatar.this,R.layout.support_simple_spinner_dropdown_item,province.getCitys().get(position).getDistricts());
+                spinner3.setAdapter(arrayAdapter3);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void initUI() {
@@ -151,5 +207,105 @@ public class Sb_manage_changeavatar extends Activity {
             mImage.setImageBitmap(mBitmap);//显示图片
             //在这个地方可以写上上传该图片到服务器的代码，后期将单独写一篇这方面的博客，敬请期待...
         }
+    }
+
+    public List<Province> parser(){
+        List<Province>list =null;
+        Province province = null;
+
+        List<City>cities = null;
+        City city = null;
+
+        List<District>districts = null;
+        District district = null;
+
+        // 创建解析器，并制定解析的xml文件
+        XmlResourceParser parser = getResources().getXml(R.xml.actions);
+        try{
+            int type = parser.getEventType();
+            while(type!=1) {
+                String tag = parser.getName();//获得标签名
+                switch (type) {
+                    case XmlResourceParser.START_DOCUMENT:
+                        list = new ArrayList<Province>();
+                        break;
+                    case XmlResourceParser.START_TAG:
+                        if ("p".equals(tag)) {
+                            province=new Province();
+                            cities = new ArrayList<City>();
+                            int n =parser.getAttributeCount();
+                            for(int i=0 ;i<n;i++){
+                                //获得属性的名和值
+                                String name = parser.getAttributeName(i);
+                                String value = parser.getAttributeValue(i);
+                                if("p_id".equals(name)){
+                                    province.setId(value);
+                                }
+                            }
+                        }
+                        if ("pn".equals(tag)){//省名字
+                            province.setName(parser.nextText());
+                        }
+                        if ("c".equals(tag)){//城市
+                            city = new City();
+                            districts = new ArrayList<District>();
+                            int n =parser.getAttributeCount();
+                            for(int i=0 ;i<n;i++){
+                                String name = parser.getAttributeName(i);
+                                String value = parser.getAttributeValue(i);
+                                if("c_id".equals(name)){
+                                    city.setId(value);
+                                }
+                            }
+                        }
+                        if ("cn".equals(tag)){
+                            city.setName(parser.nextText());
+                        }
+                        if ("d".equals(tag)){
+                            district = new District();
+                            int n =parser.getAttributeCount();
+                            for(int i=0 ;i<n;i++){
+                                String name = parser.getAttributeName(i);
+                                String value = parser.getAttributeValue(i);
+                                if("d_id".equals(name)){
+                                    district.setId(value);
+                                }
+                            }
+                            district.setName(parser.nextText());
+                            districts.add(district);
+                        }
+                        break;
+                    case XmlResourceParser.END_TAG:
+                        if ("c".equals(tag)){
+                            city.setDistricts(districts);
+                            cities.add(city);
+                        }
+                        if("p".equals(tag)){
+                            province.setCitys(cities);
+                            list.add(province);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                type = parser.next();
+            }
+        }catch (XmlPullParserException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        /*catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } */
+        catch (NumberFormatException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+
+        }catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return list;
     }
 }

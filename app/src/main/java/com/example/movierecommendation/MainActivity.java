@@ -17,8 +17,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import global_variable.Myapplication;
 import sidebar.Sb_feedback;
 import sidebar.Sb_manage;
+import sidebar.mycollection;
+import sidebar.myhabit;
+import sidebar.myhistory;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -145,10 +149,14 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_collection) {
             // Handle the camera action
+            Intent intent = new Intent(MainActivity.this, mycollection.class);
+            startActivity(intent);
         } else if (id == R.id.nav_habit) {
-
+            Intent intent = new Intent(MainActivity.this, myhabit.class);
+            startActivity(intent);
         } else if (id == R.id.nav_history) {
-
+            Intent intent = new Intent(MainActivity.this, myhistory.class);
+            startActivity(intent);
         } else if (id == R.id.nav_feedback) {
             Intent aintent = new Intent(MainActivity.this, Sb_feedback.class);
             startActivity(aintent);
@@ -162,4 +170,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Myapplication myapp = (Myapplication)MainActivity.this.getApplication();
+        TextView textView = findViewById(R.id.nickname);
+        //textView.setText("111");
+    }
 }
