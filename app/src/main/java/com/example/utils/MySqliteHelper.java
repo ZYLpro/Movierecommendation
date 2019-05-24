@@ -18,8 +18,7 @@ public class MySqliteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db){
         Log.i("tag","-------------onCreate--------------");
-        String sql="create table admins(adminid Integer primary key, adminname varchar(255),age Integer)";
-        db.execSQL(sql);//执行sql语句
+
     }
     @Override
     public void onOpen(SQLiteDatabase db){

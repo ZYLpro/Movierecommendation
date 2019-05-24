@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.bean.Admin;
 import com.example.bean.Loginuser;
 
 import java.util.ArrayList;

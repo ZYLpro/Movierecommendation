@@ -81,7 +81,7 @@
             android:background="@color/gray"
             android:text="注册"
             android:textSize="24sp"
-            android:textStyle="bold" />/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 

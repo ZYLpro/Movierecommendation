@@ -25,7 +25,8 @@
             android:id="@+id/password"
             android:textSize="24sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:inputType="textPassword">
         </EditText>
     </TableRow>
     <TableRow>
@@ -33,12 +34,18 @@
             android:text="性别："
             android:textSize="24sp"
             android:layout_width="match_parent"/>
-        <RadioGroup>
+        <RadioGroup
+            android:id="@+id/sex_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <RadioButton
+                android:id="@+id/male"
+                android:checked="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="男"/>
             <RadioButton
+                android:id="@+id/female"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="女"/>
@@ -54,20 +61,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/age">
-            <!--android:entries="@array/age"-->
 
         </Spinner>
     </TableRow>
     <TableRow>
         <TextView
-            android:text="居住地："
+            android:text="职业"
             android:textSize="24sp"
             android:layout_width="match_parent"/>
-        <EditText
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </EditText>
+        <Spinner
+            android:id="@+id/occupationspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/occupation"/>
     </TableRow>
 
     <Button
