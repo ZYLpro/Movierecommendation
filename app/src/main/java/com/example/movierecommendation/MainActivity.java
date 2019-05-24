@@ -12,6 +12,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         initView();
+
+
     }
 
     private void initView() {
@@ -173,8 +177,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Myapplication myapp = (Myapplication)MainActivity.this.getApplication();
-        TextView textView = findViewById(R.id.nickname);
-        //textView.setText("111");
+        View headerLayout = navigationView.getHeaderView(0);
+        TextView textView = headerLayout.findViewById(R.id.nickname);
+        textView.setText(myapp.getname());
+        ImageView imageView = headerLayout.findViewById(R.id.imageView);
+        if (myapp.getimage()!=null){
+            myapp.setimage(imageView);
+        }
     }
 }

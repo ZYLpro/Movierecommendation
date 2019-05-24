@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:stretchColumns="0,1" >
+    <TextView
+        android:layout_marginTop="20dp"
+        android:text="我的喜爱"
+        android:textSize="32dp"
+        android:gravity="center"/>
+    <TableRow
+        android:layout_marginTop="20dp">
+        <Button
+            android:text="全选"
+            android:layout_width="match_parent"/>
+        <Button
+            android:layout_width="match_parent"
+            android:text="删除所选"/>
+    </TableRow>
 
-</LinearLayout>
+</TableLayout>

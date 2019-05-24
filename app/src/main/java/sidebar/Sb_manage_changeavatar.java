@@ -63,8 +63,10 @@ public class Sb_manage_changeavatar extends Activity {
             public void onClick(View v) {
                 EditText editText = findViewById(R.id.昵称);
                 String name = editText.getText().toString();
-                /*Myapplication myapp = (Myapplication)Sb_manage_changeavatar.this.getApplication();
-                myapp.setname(name);*/
+                Myapplication myapp = (Myapplication)Sb_manage_changeavatar.this.getApplication();
+                myapp.setname(name);
+                ImageView imageView = findViewById(R.id.iv_image);
+                myapp.setimage(imageView);
                 Sb_manage_changeavatar.this.finish();
             }
         });
