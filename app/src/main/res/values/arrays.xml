@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="age" translatable="false">
+        <item>"under 18"</item>
+        <item>18-24</item>
+        <item>25-34</item>
+        <item>35-44</item>
+        <item>45-49</item>
+        <item>50-55</item>
+        <item>56+</item>
+    </string-array>
+    <string-array name="occupation" translatable="false">
+        <item>other</item>
+        <item>academic/educator</item>
+        <item>artist</item>
+        <item>clerical/admin</item>
+        <item>college/grad student</item>
+        <item>customer service</item>
+        <item>doctor/health care</item>
+        <item>executive/managerial</item>
+        <item>farmer</item>
+        <item>homemaker</item>
+        <item>k-12 student</item>
+        <item>lawyer</item>
+        <item>programmer</item>
+        <item>retired</item>
+        <item>sales/marketing</item>
+        <item>scientist</item>
+        <item>self-employed</item>
+        <item>engineer</item>
+        <item>tradesman</item>
+        <item>unemployed</item>
+        <item>writer</item>
+    </string-array>
+</resources>
