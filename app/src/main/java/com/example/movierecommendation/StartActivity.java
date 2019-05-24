@@ -11,13 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.bean.Admin;
 import com.example.bean.Loginuser;
-import com.example.utils.Constant;
 import com.example.utils.DbManager;
 import com.example.utils.MySqliteHelper;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -58,7 +54,7 @@ public class StartActivity extends Activity {
         });
     }
 
-    public void createDB(View view){
+    public void createDB(View v){
         //getWritableDatabase()创建或打开数据库，如果不存在则创建，否则直接打开，默认情况下getReadable()和getWritable()都表示创建可读可写
         SQLiteDatabase db=helper.getWritableDatabase();
     }
@@ -78,5 +74,7 @@ public class StartActivity extends Activity {
         db.close();
         return false;
     }
+
+
 
 }
