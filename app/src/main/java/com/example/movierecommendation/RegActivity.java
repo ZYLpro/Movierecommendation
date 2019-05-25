@@ -22,6 +22,8 @@ import com.example.utils.DbManager;
 
 import java.util.List;
 
+import global_variable.Myapplication;
+
 
 public class RegActivity extends Activity {
     //private MySqliteHelper helper;//数据库辅助操作类
@@ -34,7 +36,6 @@ public class RegActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        // helper = DbManager.getIntance(this);
 
         //获取数据库
         Copy copy=new Copy();
@@ -132,6 +133,8 @@ public class RegActivity extends Activity {
                         for (Loginuser l : list) {
                             Log.i("tag", l.toString());
                         }
+                        Myapplication myapp = (Myapplication) RegActivity.this.getApplication();
+                        myapp.setname(username);
                         db.close();
                         Toast.makeText(RegActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(RegActivity.this, MainActivity.class);
@@ -149,14 +152,12 @@ public class RegActivity extends Activity {
     }
 
     public boolean judge(String username) {
-//        SQLiteDatabase db = helper.getWritableDatabase();
         String sql = "select * from loginusers where username=?";
         Cursor cursor = DbManager.selectDataBySQL(db, sql, new String[]{username});
         List<Loginuser> list = DbManager.cursorToList(cursor);
         if (list.size() > 0) {
             return false;//已经存在用户名
         }
-        //    db.close();
         return true;
     }
 }
