@@ -18,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.Database.Copy;
 import com.example.bean.Loginuser;
 import com.example.utils.Constant;
 import com.example.utils.DbManager;
@@ -29,7 +30,8 @@ import static android.R.layout.simple_spinner_item;
 
 
 public class RegActivity extends Activity {
-    private MySqliteHelper helper;//数据库辅助操作类
+    //private MySqliteHelper helper;//数据库辅助操作类
+    public SQLiteDatabase db;
     private RadioGroup mSex_group;
     private RadioButton mMale,mFemale;
     private int sex;
@@ -38,7 +40,12 @@ public class RegActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        helper = DbManager.getIntance(this);
+        // helper = DbManager.getIntance(this);
+
+        //获取数据库
+        Copy copy=new Copy();
+        db=copy.openDatabase(getApplicationContext());
+
         // 初始化控件
         final Spinner mSpinner = (Spinner) findViewById(R.id.agespinner);
         // 建立数据源
@@ -122,7 +129,7 @@ public class RegActivity extends Activity {
                 }
                 if (!username.equals("") && !password.equals("")) {
                     if (judge(username)) {
-                        SQLiteDatabase db = helper.getWritableDatabase();
+//                        SQLiteDatabase db = helper.getWritableDatabase();
                         String sql = "select * from loginusers";
                         Cursor cursor = DbManager.selectDataBySQL(db, sql, null);
                         List<Loginuser> list = DbManager.cursorToList(cursor);
@@ -148,14 +155,14 @@ public class RegActivity extends Activity {
     }
 
     public boolean judge(String username) {
-        SQLiteDatabase db = helper.getWritableDatabase();
+//        SQLiteDatabase db = helper.getWritableDatabase();
         String sql = "select * from loginusers where username=?";
         Cursor cursor = DbManager.selectDataBySQL(db, sql, new String[]{username});
         List<Loginuser> list = DbManager.cursorToList(cursor);
         if (list.size() > 0) {
-            return false;
+            return false;//已经存在用户名
         }
-        db.close();
+        //    db.close();
         return true;
     }
 }
