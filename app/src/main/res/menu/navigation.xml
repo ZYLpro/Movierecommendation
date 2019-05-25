@@ -19,6 +19,6 @@
     <item
         android:id="@+id/navigation_setting"
         android:icon="@drawable/ic_social"
-        android:title="@string/title_social" />
+        android:title="4" />
 
 </menu>

@@ -1,12 +1,10 @@
 package com.example.movierecommendation;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,13 +18,9 @@ import android.widget.Toast;
 
 import com.example.Database.Copy;
 import com.example.bean.Loginuser;
-import com.example.utils.Constant;
 import com.example.utils.DbManager;
-import com.example.utils.MySqliteHelper;
 
 import java.util.List;
-
-import static android.R.layout.simple_spinner_item;
 
 
 public class RegActivity extends Activity {
