@@ -21,13 +21,13 @@
     <!--android:layout_width="wrap_content"-->
     <!--android:layout_height="wrap_content">-->
     <LinearLayout
-        android:layout_marginTop="80dp"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="250dp"
+            android:layout_height="200dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:paddingLeft="10dp"
@@ -35,16 +35,18 @@
             android:src="@drawable/poster" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#00008B"
                     android:text="电影名:"/>
                 <TextView
                     android:id="@+id/moviename"
@@ -53,86 +55,111 @@
                     android:text="xxxx"/>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="fill_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="导演"/>
-            <TextView
-                android:layout_width="fill_parent"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#00008B"
+                    android:text="导     演:"/>
+                <TextView
+                    android:id="@+id/director"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="xxxx"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="主演演员"/>
-            <TextView
-                android:layout_width="fill_parent"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#00008B"
+                    android:text="类     别:"/>
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="xxxx"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="评分，到时候做成星星或者直接写数字"/>
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#00008B"
+                    android:text="评     分:"/>
+                <TextView
+                    android:id="@+id/rating"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="xxxx"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#00008B"
+                    android:text="简     介:"/>
+                <TextView
+                    android:id="@+id/intro"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="xxxx"/>
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
-    <!--</LinearLayout>-->
+
+
     <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/review"
         android:orientation="vertical">
         <TextView
+            android:paddingLeft="10dp"
+            android:textColor="#000000"
+            android:textSize="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评论:"/>
-        <TableLayout
+            android:text="电影评论:"/>
+        <ListView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="用户名:"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="评论内容"/>
-            </TableRow>
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="用户名:"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="评论内容"/>
-            </TableRow>
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="用户名:"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="评论内容"/>
-            </TableRow>
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="用户名:"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="评论内容"/>
-            </TableRow>
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="用户名:"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="评论内容"/>
-            </TableRow>
-        </TableLayout>
+            android:layout_height="wrap_content"
+            android:id="@+id/reviewlist">
+
+        </ListView>
+
     </LinearLayout>
 
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
 
+        <!--<TextView-->
+            <!--android:id="@+id/username"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="username"/>-->
+        <!--<TextView-->
+            <!--android:id="@+id/content"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+        <!--android:text="content"/>-->
+
+    <!--</LinearLayout>-->
 </LinearLayout>

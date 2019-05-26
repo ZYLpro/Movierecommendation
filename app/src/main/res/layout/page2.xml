@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
         <TextView
-            android:layout_margin="100dp"
+            android:layout_margin="40dp"
             android:layout_width="fill_parent"
             android:gravity="center"
             android:layout_height="wrap_content"
@@ -17,149 +17,348 @@
     </LinearLayout>
     <TableLayout
         android:id="@+id/catTable"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-        <TableRow android:gravity="center">
+        <TableRow  android:gravity="center">
             <ImageButton
                 android:id="@+id/cat1"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="3dp"
                 android:layout_width="20dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/comedy" />
+                android:layout_height="55dp"
+                android:background="@drawable/action" />
             <ImageButton
                 android:id="@+id/cat2"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="5dp"
                 android:layout_width="20dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/comedy" />
+                android:layout_height="55dp"
+                android:background="@drawable/adventure" />
             <ImageButton
                 android:id="@+id/cat3"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_width="20dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/comedy" />
-            <ImageButton
-                android:id="@+id/cat4"
-                android:layout_width="20dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/comedy" />
+                android:layout_height="55dp"
+                android:background="@drawable/animation" />
         </TableRow>
         <TableRow android:layout_marginTop="10dp">
             <TextView
-                android:text="cat1"
+                android:text="Action"
                 android:id="@+id/category1"
                 android:clickable="true"
                 android:textColor="@drawable/textselector"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="60dp"
+                android:layout_width="5dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="75dp"
                 />
             <TextView
-                android:text="cat2"
+                android:text="Adventure"
                 android:id="@+id/category2"
                 android:clickable="true"
                 android:textColor="@drawable/textselector"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="60dp"
+                android:layout_width="5dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="40dp"
                 />
             <TextView
-                android:text="cat3"
+                android:text="Animation"
                 android:id="@+id/category3"
                 android:clickable="true"
                 android:textColor="@drawable/textselector"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="30dp"
                 />
+
+        </TableRow>
+        <TableRow  android:gravity="center">
+            <ImageButton
+                android:id="@+id/cat4"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="40dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/children" />
+            <ImageButton
+                android:id="@+id/cat5"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="35dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/comedy" />
+            <ImageButton
+                android:id="@+id/cat6"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/crime" />
+        </TableRow>
+        <TableRow android:layout_marginTop="10dp">
             <TextView
-                android:text="cat4"
+                android:text="Children's"
                 android:id="@+id/category4"
                 android:clickable="true"
                 android:textColor="@drawable/textselector"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="62dp"
                 />
-        </TableRow>
-        <TableRow android:gravity="center"
-            android:layout_marginTop="20dp">
-            <ImageButton
-                android:id="@+id/cat5"
-                android:layout_width="20dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/comedy" />
-            <ImageButton
-                android:id="@+id/cat6"
-                android:layout_width="20dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/comedy" />
-            <ImageButton
-                android:id="@+id/cat7"
-                android:layout_width="20dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/comedy" />
-            <ImageButton
-                android:id="@+id/cat8"
-                android:layout_width="20dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/comedy" />
-        </TableRow>
-        <TableRow android:layout_marginTop="10dp">
             <TextView
-                android:text="cat5"
+                android:text="Comedy"
                 android:id="@+id/category5"
                 android:clickable="true"
                 android:textColor="@drawable/textselector"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="45dp"
                 />
             <TextView
-                android:text="cat6"
+                android:text="Crime"
                 android:id="@+id/category6"
                 android:clickable="true"
                 android:textColor="@drawable/textselector"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="50dp"
                 />
+        </TableRow>
+        <TableRow  android:gravity="center">
+            <ImageButton
+                android:id="@+id/cat7"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="38dp"
+                android:layout_marginRight="50dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/documentary" />
+            <ImageButton
+                android:id="@+id/cat8"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/drama" />
+            <ImageButton
+                android:id="@+id/cat9"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/fantasy" />
+        </TableRow>
+        <TableRow android:layout_marginTop="10dp">
             <TextView
-                android:text="cat7"
+                android:text="Documentary"
                 android:id="@+id/category7"
                 android:clickable="true"
                 android:textColor="@drawable/textselector"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="55dp"
                 />
             <TextView
-                android:text="cat8"
+                android:text="Drama"
                 android:id="@+id/category8"
+                android:clickable="true"
+                android:textColor="@drawable/textselector"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                />
+            <TextView
+                android:text="Fantasy"
+                android:id="@+id/category9"
+                android:clickable="true"
+                android:textColor="@drawable/textselector"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="45dp"
+                />
+        </TableRow>
+        <TableRow  android:gravity="center">
+            <ImageButton
+                android:id="@+id/cat10"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="40dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/film_noir" />
+            <ImageButton
+                android:id="@+id/cat11"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/horror" />
+            <ImageButton
+                android:id="@+id/cat12"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/musical" />
+        </TableRow>
+        <TableRow android:layout_marginTop="10dp">
+            <TextView
+                android:text="Film-Noir"
+                android:id="@+id/category10"
+                android:clickable="true"
+                android:textColor="@drawable/textselector"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="70dp"
+                />
+            <TextView
+                android:text="Horror"
+                android:id="@+id/category11"
+                android:clickable="true"
+                android:textColor="@drawable/textselector"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                />
+            <TextView
+                android:text="Musical"
+                android:id="@+id/category12"
+                android:clickable="true"
+                android:textColor="@drawable/textselector"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="45dp"
+                />
+        </TableRow>
+        <TableRow  android:gravity="center">
+            <ImageButton
+                android:id="@+id/cat13"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="45dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/mystery" />
+            <ImageButton
+                android:id="@+id/cat14"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="35dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/romance" />
+            <ImageButton
+                android:id="@+id/cat15"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/sci" />
+        </TableRow>
+        <TableRow android:layout_marginTop="10dp">
+            <TextView
+                android:text="Mystery"
+                android:id="@+id/category13"
+                android:clickable="true"
+                android:textColor="@drawable/textselector"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="70dp"
+                />
+            <TextView
+                android:text="Romance"
+                android:id="@+id/category14"
+                android:clickable="true"
+                android:textColor="@drawable/textselector"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="45dp"
+                />
+            <TextView
+                android:text="Sci-Fi"
+                android:id="@+id/category15"
+                android:clickable="true"
+                android:textColor="@drawable/textselector"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="55dp"
+                />
+        </TableRow>
+        <TableRow  android:gravity="center">
+            <ImageButton
+                android:id="@+id/cat16"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="35dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/thriller" />
+            <ImageButton
+                android:id="@+id/cat17"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="35dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/war" />
+            <ImageButton
+                android:id="@+id/cat18"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="20dp"
+                android:layout_height="55dp"
+                android:background="@drawable/western" />
+        </TableRow>
+        <TableRow android:layout_marginTop="10dp">
+            <TextView
+                android:text="Thriller"
+                android:id="@+id/category16"
+                android:clickable="true"
+                android:textColor="@drawable/textselector"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="70dp"
+                />
+            <TextView
+                android:text="War"
+                android:id="@+id/category17"
                 android:clickable="true"
                 android:textColor="@drawable/textselector"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="60dp"
                 />
+            <TextView
+                android:text="Western"
+                android:id="@+id/category18"
+                android:clickable="true"
+                android:textColor="@drawable/textselector"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                />
         </TableRow>
     </TableLayout>
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="frag2"-->
-    <!--android:textSize="30sp"/>-->
 
-    <!--<Button-->
-    <!--android:id="@+id/bt2"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="Fragment中的按钮"-->
-    <!--android:textAllCaps="false"/>-->
 </RelativeLayout>
