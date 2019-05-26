@@ -33,7 +33,7 @@
             android:text="昵称"
             android:layout_width="match_parent"/>
         <EditText
-            android:id="@+id/昵称"
+            android:id="@+id/nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </EditText>
@@ -42,12 +42,15 @@
         <TextView
             android:text="性别"
             android:layout_width="match_parent"/>
-        <RadioGroup>
+        <RadioGroup
+            android:id="@+id/sex_group">
             <RadioButton
+                android:id="@+id/male"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="男"/>
             <RadioButton
+                android:id="@+id/female"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="女"/>
@@ -69,31 +72,15 @@
     </TableRow>
     <TableRow>
         <TextView
-            android:text="居住地"
+            android:text="年龄"
             android:layout_width="match_parent"/>
-        <LinearLayout
-            android:orientation="horizontal"
+
+        <Spinner
+            android:id="@+id/occupationspinner"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-            <Spinner
-                android:id="@+id/s1"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"></Spinner>
-            <Spinner
-                android:id="@+id/s2"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"></Spinner>
-            <Spinner
-                android:id="@+id/s3"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"></Spinner>
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:entries="@array/occupation"/>
+        <!--android:entries="@array/age"-->
     </TableRow>
 
     <Button
