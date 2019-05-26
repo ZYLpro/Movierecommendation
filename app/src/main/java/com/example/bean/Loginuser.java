@@ -7,14 +7,16 @@ public class Loginuser {
     private int gender;
     private int age;
     private int occupation;
+    private String email;
 
-    public Loginuser(int userid, String username, String password, int gender, int age, int occupation) {
+    public Loginuser(int userid, String username, String password, int gender, int age, int occupation, String email) {
         this.userid = userid;
         this.username = username;
         this.password = password;
         this.gender = gender;
         this.age = age;
         this.occupation = occupation;
+        this.email = email;
     }
 
     @Override
@@ -26,6 +28,7 @@ public class Loginuser {
                 ", gender=" + gender +
                 ", age=" + age +
                 ", occupation=" + occupation +
+                ", email=" + email +
                 '}';
     }
 
@@ -75,5 +78,13 @@ public class Loginuser {
 
     public void setOccupation(int occupation) {
         this.occupation = occupation;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

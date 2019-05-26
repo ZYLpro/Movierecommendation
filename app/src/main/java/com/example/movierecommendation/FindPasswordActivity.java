@@ -19,15 +19,15 @@ import java.util.List;
 
 import global_variable.Myapplication;
 
-public class StartActivity extends Activity {
+public class FindPasswordActivity extends Activity {
 
     public SQLiteDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_findpassword);
 
-        Button button = (Button)findViewById(R.id.login);
+        Button button = (Button)findViewById(R.id.LogByEmail);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,46 +37,36 @@ public class StartActivity extends Activity {
                 db=copy.openDatabase(getApplicationContext());
 
                 EditText editUser=(EditText)findViewById(R.id.username);
-                EditText editPass=(EditText)findViewById(R.id.password) ;
+                EditText editEmail=(EditText)findViewById(R.id.email) ;
                 String username=editUser.getText().toString();
-                String password=editPass.getText().toString();
-                if(login(username,password)){
+                String email=editEmail.getText().toString();
+                if(login(username,email)){
                     //用完数据库一定要关闭
-                    Myapplication myapp = (Myapplication) StartActivity.this.getApplication();
+                    Myapplication myapp = (Myapplication) FindPasswordActivity.this.getApplication();
                     myapp.setname(username);
                     db.close();
-
-                    Intent intent = new Intent(StartActivity.this,MainActivity.class);
+                    Intent intent = new Intent(FindPasswordActivity.this,MainActivity.class);
                     startActivity(intent);
-                    StartActivity.this.finish();
+                    FindPasswordActivity.this.finish();
                 }
                 else {
-                    Toast.makeText(StartActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FindPasswordActivity.this, "用户名或邮箱错误", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        Button Signupbutton = (Button)findViewById(R.id.register);
-        Signupbutton.setOnClickListener(new View.OnClickListener() {
+        Button backButton = (Button)findViewById(R.id.back);
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this,RegActivity.class);
-                startActivity(intent);
-
-            }
-        });
-        Button forgetButton = (Button)findViewById(R.id.forget);
-        forgetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this,FindPasswordActivity.class);
+                Intent intent = new Intent(FindPasswordActivity.this,StartActivity.class);
                 startActivity(intent);
 
             }
         });
     }
-    public boolean login(String username,String password) {
-        String sql = "select * from loginusers where username=? and password=?";
-        Cursor cursor = DbManager.selectDataBySQL(db,sql,new String[]{username,password});
+    public boolean login(String username,String email) {
+        String sql = "select * from loginusers where username=? and email=?";
+        Cursor cursor = DbManager.selectDataBySQL(db,sql,new String[]{username,email});
         List<Loginuser> list=DbManager.cursorToList(cursor);
         for(Loginuser l:list){
             Log.i("tag", l.toString());
@@ -88,6 +78,7 @@ public class StartActivity extends Activity {
         db.close();
         return false;
     }
+
 
 
 }

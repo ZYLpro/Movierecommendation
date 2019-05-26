@@ -35,7 +35,7 @@ public class RegActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.reg);
 
         //获取数据库
         Copy copy=new Copy();
@@ -101,8 +101,10 @@ public class RegActivity extends Activity {
             public void onClick(View v) {
                 EditText editUser = (EditText) findViewById(R.id.username);
                 EditText editPass = (EditText) findViewById(R.id.password);
+                EditText editEmail = (EditText) findViewById(R.id.email);
                 String username = editUser.getText().toString();
                 String password = editPass.getText().toString();
+                String email = editEmail.getText().toString();
                 int occupation=(int)occupationSpinner.getSelectedItemId();
                 int num = (int) mSpinner.getSelectedItemId();
                 int age = 1;
@@ -124,11 +126,10 @@ public class RegActivity extends Activity {
                 }
                 if (!username.equals("") && !password.equals("")) {
                     if (judge(username)) {
-//                        SQLiteDatabase db = helper.getWritableDatabase();
                         String sql = "select * from loginusers";
                         Cursor cursor = DbManager.selectDataBySQL(db, sql, null);
                         List<Loginuser> list = DbManager.cursorToList(cursor);
-                        String insert = "insert into loginusers values(" + String.valueOf(list.size() + 1) + ",\'" + username + "\',\'" + password + "\'," + String.valueOf(sex) + "," + String.valueOf(age) + ", "+String.valueOf(occupation)+")";
+                        String insert = "insert into loginusers values(" + String.valueOf(list.size() + 1) + ",\'" + username + "\',\'" + password + "\'," + String.valueOf(sex) + "," + String.valueOf(age) + ", "+String.valueOf(occupation)+ ",\' "+email+"\')";
                         db.execSQL(insert);
                         for (Loginuser l : list) {
                             Log.i("tag", l.toString());
@@ -147,6 +148,14 @@ public class RegActivity extends Activity {
                 else{
                     Toast.makeText(RegActivity.this, "用户名和密码不能为空", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        Button backButton = (Button)findViewById(R.id.login);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegActivity.this,StartActivity.class);
+                startActivity(intent);
             }
         });
     }
