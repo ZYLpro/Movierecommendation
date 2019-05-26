@@ -99,14 +99,21 @@ public class MovieActivity extends AppCompatActivity {
 
         //  List<Map<String, String>> list = new ArrayList<Map<String, String>>();
         Map<String, String> map;
-
+        String username=null;
         while(cursor.moveToNext()){
             Log.i("test", "------读review内容-----");
             int userid=cursor.getInt(cursor.getColumnIndex("userid"));
             String content=cursor.getString(cursor.getColumnIndex("content"));
 
+            //从loginuser中毒username
+            String sql4 = "select * from loginusers where userid=?";
+            Cursor cursor4 = DbManager.selectDataBySQL(db, sql4, new String[]{String.valueOf(userid)});
+            while (cursor4.moveToNext()){
+                username=cursor4.getString(cursor4.getColumnIndex("username"));
+            }
+
             map = new HashMap<String, String>();
-            map.put("username", userid+"");
+            map.put("username", username);
             map.put("content",content);
             data.add(map);
         }
