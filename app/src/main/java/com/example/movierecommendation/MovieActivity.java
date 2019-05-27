@@ -78,6 +78,11 @@ public class MovieActivity extends AppCompatActivity {
             categorystring=cursor2.getString(cursor2.getColumnIndex("category"));
             introstring=cursor2.getString(cursor2.getColumnIndex("intro"));
             directorstring=cursor2.getString(cursor2.getColumnIndex("director"));
+            String sql5 = "select * from movierating where movieid=?";
+            Cursor cursor5 = DbManager.selectDataBySQL(db, sql5, new String[]{String.valueOf(movieid)});
+            while(cursor5.moveToNext()){
+                ratingstring=cursor5.getString((cursor5.getColumnIndex("rating")));
+            }
         }
 
         //设置内容
