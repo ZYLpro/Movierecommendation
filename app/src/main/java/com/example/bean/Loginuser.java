@@ -27,8 +27,8 @@ public class Loginuser {
                 ", password='" + password +
                 ", gender=" + gender +
                 ", age=" + age +
-                ", occupation=" + occupation +
                 ", email=" + email +
+                ", occupation=" + occupation +
                 '}';
     }
 

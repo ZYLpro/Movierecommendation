@@ -45,6 +45,7 @@ public class Sb_manage_changeavatar extends Activity {
 
     private RadioGroup mSex_group;
     private RadioButton mMale,mFemale;
+    private String email;
     private int age,gender,occupation;
     private Myapplication myapp;
 
@@ -65,6 +66,7 @@ public class Sb_manage_changeavatar extends Activity {
         editText.setText(myapp.getname());
         editText.setFocusable(false);
         editText.setFocusableInTouchMode(false);
+        final EditText emailEdit=(EditText)findViewById(R.id.email);
         String sql = "select * from loginusers where username=?";
         Cursor cursor = DbManager.selectDataBySQL(db, sql, new String[]{myapp.getname()});
         list = DbManager.cursorToList(cursor);
@@ -74,10 +76,12 @@ public class Sb_manage_changeavatar extends Activity {
             gender=Integer.valueOf(user.substring(user.indexOf("gender")+7,user.indexOf("gender")+8));
             age= Integer.valueOf(user.substring(user.indexOf("age")+4,user.indexOf("age")+5));
             occupation=Integer.valueOf(user.substring(user.indexOf("occupation")+11,user.length()-2));
-            Log.i("tag",user.substring(user.indexOf("gender")+7,user.indexOf("gender")+8));
-            Log.i("tag",user.substring(user.indexOf("age")+4,user.indexOf("age")+5));
-            Log.i("tag",user.substring(user.indexOf("occupation")+11,user.length()-2));
+            email=user.substring(user.indexOf("email")+6,user.indexOf(" occupation")-1);
+            //Log.i("tag",user.substring(user.indexOf("gender")+7,user.indexOf("gender")+8));
+            //Log.i("tag",user.substring(user.indexOf("age")+4,user.indexOf("age")+5));
+            Log.i("tag",user.substring(user.indexOf("email")+6,user.indexOf(" occupation")-1));
         }
+        emailEdit.setText(email);
         //将可选内容与ArrayAdapter连接，
         final Spinner ageSpinner = (Spinner) findViewById(R.id.agespinner);
         String[] mAges = getResources().getStringArray(R.array.age);
@@ -156,7 +160,7 @@ public class Sb_manage_changeavatar extends Activity {
                     case 6:
                         age = 56;break;
                 }
-                String update = "update loginusers set gender="  + String.valueOf(gender) + " ,age=" + String.valueOf(age) + ", occupation=" + String.valueOf(occupation) + " where username=\'"+myapp.getname()+"\'";
+                String update = "update loginusers set gender="  + String.valueOf(gender) + " ,age=" + String.valueOf(age) + ", occupation=" + String.valueOf(occupation) +", email=\'" + emailEdit.getText().toString() +  "\' where username=\'"+myapp.getname()+"\'";
                 DbManager.execSQL(db,update);
                 Log.i("tag",update);
                 db.close();
