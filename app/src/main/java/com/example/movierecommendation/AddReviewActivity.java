@@ -21,6 +21,9 @@ import com.example.utils.DbManager;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import global_variable.Myapplication;
+import sidebar.Sb_manage_changeavatar;
+
 public class AddReviewActivity extends AppCompatActivity {
 
     private RatingBar ratingBar;
@@ -35,9 +38,12 @@ public class AddReviewActivity extends AppCompatActivity {
     private String oldrating;
     private String time;
     private SQLiteDatabase db;
+    private Myapplication myapp;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addreview);
+
+        myapp = (Myapplication) AddReviewActivity.this.getApplication();
 
         //获取id
         // 获取意图对象
@@ -46,7 +52,6 @@ public class AddReviewActivity extends AppCompatActivity {
         //获取传递的值
 
         movieid=b.getInt("movieid");
-        userid=b.getInt("userid");
         oldrating=b.getString("rating");
 
         //初始化
@@ -74,32 +79,6 @@ public class AddReviewActivity extends AppCompatActivity {
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
                 time = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
 
-//                ContentValues cv=new ContentValues();
-//                cv.put("userid",userid);
-//                cv.put("movieid",movieid);
-//                cv.put("rating",rating);
-//                cv.put("time",time);
-//                db.insert("ratingrecord",null,cv);
-
-                //加评论
-//                ContentValues cv2=new ContentValues();
-//                cv2.put("id",0);
-//                cv2.put("userid",userid);
-//                cv2.put("movieid",movieid);
-//                cv2.put("content",content);
-//                cv2.put("time",time);
-//                db.insert("reviews",null,cv2);
-
-
-//                String sql2="select * from ratingrecord";
-//                Cursor cursor2 = DbManager.selectDataBySQL(db, sql2, null);
-//                int id2=1000;
-//                while (cursor2.moveToNext()){
-//                    id2=cursor2.getInt(cursor2.getColumnIndex("id"));
-//                }
-//                Log.i("test", "最后一个ratingrecord的id"+id2);
-//                String insert2 = "insert into reviews values(" + String.valueOf(id2+1) + "," + userid  +","+  movieid + ",\'" + rating + "\',\'" + time+"\')";
-//                db.execSQL(insert2);
 
                 String sql = "select * from reviews";
                 Cursor cursor = DbManager.selectDataBySQL(db, sql, null);
@@ -108,9 +87,14 @@ public class AddReviewActivity extends AppCompatActivity {
                     id=cursor.getInt(cursor.getColumnIndex("id"));
                 }
                 Log.i("test", "最后一个review的id"+id);
-//                int count=cursor.getCount();
-//
-                String insert = "insert into reviews values(" + String.valueOf(id+1) + "," + userid  +","+  movieid + ",\'" + content + "\',\'" + time+"\')";
+                String sql2="select * from loginusers where username=?";
+                Cursor cursor2 = DbManager.selectDataBySQL(db, sql2, new String[]{myapp.getname()});
+                while (cursor2.moveToNext()){
+                    userid=cursor2.getInt(cursor2.getColumnIndex("userid"));
+                }
+                Log.i("tag", String.valueOf(userid));
+
+                String insert = "insert into reviews values(" + String.valueOf(id+1) + "," + userid  +","+  movieid + ",\'" + content + "\',\'" + time+"\',\'"+myapp.getname()+"\')";
                 db.execSQL(insert);
 
 

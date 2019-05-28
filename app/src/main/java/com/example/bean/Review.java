@@ -20,7 +20,6 @@ public class Review {
         Review.contentArray = contentArray;
     }
 
-
     public static String getContent(int position) {
         return contentArray[position % nameArray.length];
     }
