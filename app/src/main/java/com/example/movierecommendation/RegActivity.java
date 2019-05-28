@@ -35,7 +35,7 @@ public class RegActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reg);
+        setContentView(R.layout.activity_register);
 
         //获取数据库
         Copy copy=new Copy();

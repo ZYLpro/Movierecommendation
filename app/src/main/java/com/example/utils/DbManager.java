@@ -25,6 +25,8 @@ public class DbManager {
         Cursor cursor = null;
         if (db != null) {
             cursor = db.rawQuery(sql, selectionArgs);
+            //解决登录闪退问题
+            cursor.moveToFirst();
         }
         return cursor;
     }

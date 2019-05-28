@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView android:text="请选择喜爱的电影种类"
+        android:gravity="center"
+        android:textSize="32dp"
+        android:layout_marginTop="20dp"/>
+    <TableRow
+        android:layout_marginTop="36dp">
+        <CheckBox
+            android:id="@+id/Animation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Animation"/>
+        <CheckBox
+            android:id="@+id/Childrens"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Children's"/>
+    </TableRow>
+    <TableRow>
+        <CheckBox
+            android:id="@+id/Comedy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Comedy"/>
+        <CheckBox
+            android:id="@+id/Adventure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Adventure"/>
+    </TableRow>
+    <TableRow>
+        <CheckBox
+            android:id="@+id/Fantasy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Fantasy"/>
+        <CheckBox
+            android:id="@+id/Romance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Romance"/>
+    </TableRow>
+    <TableRow>
+        <CheckBox
+            android:id="@+id/Drama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Drama"/>
+        <CheckBox
+            android:id="@+id/Action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Action"/>
+    </TableRow>
+    <TableRow>
+        <CheckBox
+            android:id="@+id/Crime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Crime"/>
+        <CheckBox
+            android:id="@+id/Thriller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Thriller"/>
+    </TableRow>
+    <TableRow>
+        <CheckBox
+            android:id="@+id/Horror"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Horror"/>
+        <CheckBox
+            android:id="@+id/Sci-Fi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Sci-Fi"/>
+    </TableRow>
+    <TableRow>
+        <CheckBox
+            android:id="@+id/Documentary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Documentary"/>
+        <CheckBox
+            android:id="@+id/War"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="War"/>
+    </TableRow>
+    <TableRow>
+        <CheckBox
+            android:id="@+id/Musical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Musical"/>
+        <CheckBox
+            android:id="@+id/Mystery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Mystery"/>
+    </TableRow>
+    <TableRow>
+        <CheckBox
+            android:id="@+id/Film-Noir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Film-Noir"/>
+        <CheckBox
+            android:id="@+id/Western"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28dp"
+            android:text="Western"/>
+    </TableRow>
+    <Button
+        android:textSize="28dp"
+        android:text="确定"
+        android:layout_marginTop="40dp"
+        android:id="@+id/OK"/>
+</TableLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
