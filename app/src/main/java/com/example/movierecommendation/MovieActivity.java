@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,14 +39,18 @@ public class MovieActivity extends AppCompatActivity {
     private TextView director;
     private TextView rating;
 
+    private ImageView poster;
+
     private String movienamestring;
     private String categorystring;
     private String introstring;
     private String directorstring;
     private String ratingstring;
 
-
-
+    //添加评论
+    private Button add;
+    int userid=1;
+    private int movieid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +64,7 @@ public class MovieActivity extends AppCompatActivity {
         Bundle b=intent.getExtras();
         //获取传递的值
 
-        int movieid=b.getInt("movieid");
+        movieid=b.getInt("movieid");
         ratingstring=b.getString("rating");
 
         //填写上方信息
@@ -69,6 +75,11 @@ public class MovieActivity extends AppCompatActivity {
         director=findViewById(R.id.director);
         rating=findViewById(R.id.rating);
         intro=findViewById(R.id.intro);
+
+        poster=findViewById(R.id.poster);
+
+        add=findViewById(R.id.add);
+
         //获取内容
         String sql = "select * from movies where movieid=?";
         Cursor cursor2 = DbManager.selectDataBySQL(db, sql, new String[]{String.valueOf(movieid)});
@@ -87,10 +98,9 @@ public class MovieActivity extends AppCompatActivity {
         rating.setText(ratingstring);
         intro.setText(introstring);
 
+        poster.getDrawable().setLevel(movieid-1);
 
-
-
-        //取review
+        //取reviewc
         data=new ArrayList<Map<String,String>>();
 
         String sql3 = "select * from reviews where movieid=?";
@@ -123,6 +133,23 @@ public class MovieActivity extends AppCompatActivity {
         list_lv=(ListView) findViewById(R.id.reviewlist);
         adapter=new MyAdapter(this);
         list_lv.setAdapter(adapter);
+
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(MovieActivity.this,AddReviewActivity.class);
+                Bundle b=new Bundle();
+                b.putInt("movieid",movieid);
+                b.putInt("userid",userid);
+                //还要传rating，因为跳回的时候需要
+                b.putString("rating",String.valueOf(rating));
+                intent1.putExtras(b);//到时候再替换
+
+
+                startActivity(intent1);
+            }
+        });
     }
 
     static class ViewHolder
@@ -130,14 +157,14 @@ public class MovieActivity extends AppCompatActivity {
         public TextView username;
         public TextView content;
     }
-    public class MyAdapter extends BaseAdapter
-    {
+    public class MyAdapter extends BaseAdapter {
 
         private LayoutInflater mInflater = null;
-        public MyAdapter(Context context)
-        {
+
+        public MyAdapter(Context context) {
             this.mInflater = LayoutInflater.from(context);
         }
+
         @Override
         public int getCount() {
             // TODO Auto-generated method stub
@@ -159,19 +186,16 @@ public class MovieActivity extends AppCompatActivity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             // TODO Auto-generated method stub
-            ViewHolder item ;
+            ViewHolder item;
             Log.v("BaseAdapterTest", "getView " + position + " " + convertView);
 
-            if(convertView ==null)
-            {
+            if (convertView == null) {
                 item = new ViewHolder();
                 convertView = mInflater.inflate(R.layout.review_item, null);
-                item.username=(TextView) convertView.findViewById(R.id.username);
-                item.content=(TextView) convertView.findViewById(R.id.content);
+                item.username = (TextView) convertView.findViewById(R.id.username);
+                item.content = (TextView) convertView.findViewById(R.id.content);
                 convertView.setTag(item); //绑定ViewHolder对象
-            }
-            else
-            {
+            } else {
                 item = (ViewHolder) convertView.getTag();//取出ViewHolder对象
             }
             /**设置TextView显示的内容，即我们存放在动态数组中的数据*/
@@ -181,8 +205,8 @@ public class MovieActivity extends AppCompatActivity {
 
             return convertView;
         }
-
     }
+
 
 
 

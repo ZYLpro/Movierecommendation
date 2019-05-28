@@ -16,5 +16,8 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+    <style name="Button" parent="Theme.AppCompat">
+        <!-- 背景颜色 -->
+        <item name="colorButtonNormal">@color/gold</item>
+    </style>
 </resources>

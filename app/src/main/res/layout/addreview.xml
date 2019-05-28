@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:textSize="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="电影评分页面"/>
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#00008B"
+            android:textSize="35dp"
+            android:text="评分:"/>
+        <RatingBar
+            android:progressTint="@color/gold"
+            android:id="@+id/ratingBar"
+            android:numStars="5"
+            android:rating="1"
+            android:stepSize="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#00008B"
+            android:textSize="35dp"
+            android:text="评论:"/>
+        <EditText
+            android:id="@+id/reviewcontent"
+            android:layout_marginRight="30dp"
+            android:hint="请输入评论内容"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minLines="6"
+            android:gravity="top"
+            android:background="@drawable/edit_background"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"/>
+
+</LinearLayout>
