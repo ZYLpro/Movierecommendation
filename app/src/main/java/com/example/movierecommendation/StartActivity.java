@@ -1,6 +1,7 @@
 package com.example.movierecommendation;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -27,7 +28,7 @@ public class StartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        Button button = (Button)findViewById(R.id.Login);
+        Button button = (Button)findViewById(R.id.login);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,8 +45,16 @@ public class StartActivity extends Activity {
                     //用完数据库一定要关闭
                     Myapplication myapp = (Myapplication) StartActivity.this.getApplication();
                     myapp.setname(username);
+                    //登录次数加一
+                    /*Cursor cursor = db.rawQuery("SELECT times FROM loginusers WHERE username = ?",new String[]{username});
+                    cursor.moveToFirst();
+                    myapp.setIsFirst(1 + cursor.getInt(cursor.getColumnIndex("times")));
+                    String where = "username = ?";
+                    String[] whereValue = {username};
+                    ContentValues cv = new ContentValues();
+                    cv.put("times",myapp.getIsFirst());
+                    db.update("loginuser",cv,where,whereValue);*/
                     db.close();
-
                     Intent intent = new Intent(StartActivity.this,MainActivity.class);
                     startActivity(intent);
                     StartActivity.this.finish();
@@ -60,6 +69,15 @@ public class StartActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this,RegActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        Button forgetButton = (Button)findViewById(R.id.forget);
+        forgetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this,FindPasswordActivity.class);
                 startActivity(intent);
 
             }
@@ -79,7 +97,6 @@ public class StartActivity extends Activity {
         db.close();
         return false;
     }
-
 
 
 }

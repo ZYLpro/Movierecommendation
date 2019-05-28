@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity
         listFragment = new ArrayList<>();
         listFragment.add(new Fragment1());
         listFragment.add(new Fragment2());
-        listFragment.add(new Fragment3());
         listFragment.add(new Fragment4());
         MyFragAdaptre myAdapter = new MyFragAdaptre(getSupportFragmentManager(), this, listFragment);
         viewPager.setAdapter(myAdapter);
@@ -67,9 +66,6 @@ public class MainActivity extends AppCompatActivity
                         return true;
                     case R.id.navigation_dashboard:
                         viewPager.setCurrentItem(1);
-                        return true;
-                    case R.id.navigation_notifications:
-                        viewPager.setCurrentItem(2);
                         return true;
                     case R.id.navigation_setting:
                         viewPager.setCurrentItem(3);

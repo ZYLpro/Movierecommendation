@@ -9,4 +9,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="inputAccHint">用户名</string>
+    <string name="inputPwdHint">密码</string>
+    <string name="inputEmailHint">邮箱</string>
+    <string name="strAccInputLabel">昵称</string>
+    <string name="strPswInputLabel">密码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
 </resources>

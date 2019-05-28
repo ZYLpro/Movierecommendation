@@ -1,6 +1,5 @@
 package com.example.utils;
 
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -11,15 +10,6 @@ import java.util.List;
 
 public class DbManager {
     //主要工具类
-    private static MySqliteHelper helper;
-
-    public static MySqliteHelper getIntance(Context context) {
-        //获得helper类对象
-        if (helper == null) {
-            helper = new MySqliteHelper(context);
-        }
-        return helper;
-    }
 
     //根据sql语句在数据库中执行增删改操作
     public static void execSQL(SQLiteDatabase db, String sql) {
@@ -35,6 +25,8 @@ public class DbManager {
         Cursor cursor = null;
         if (db != null) {
             cursor = db.rawQuery(sql, selectionArgs);
+            //解决登录闪退问题
+            cursor.moveToFirst();
         }
         return cursor;
     }
@@ -48,10 +40,11 @@ public class DbManager {
             int userid = cursor.getInt(columnIndex);//根据参数中int值的value值
             String username = cursor.getString(cursor.getColumnIndex("username"));
             String password = cursor.getString(cursor.getColumnIndex("password"));
+            String email = cursor.getString(cursor.getColumnIndex("email"));
             int gender = cursor.getInt(cursor.getColumnIndex("gender"));
             int age = cursor.getInt(cursor.getColumnIndex("age"));
             int occupation = cursor.getInt(cursor.getColumnIndex("occupation"));
-            Loginuser loginuser = new Loginuser(userid, username, password,gender,age,occupation);
+            Loginuser loginuser = new Loginuser(userid, username, password,gender,age,occupation,email);
             list.add(loginuser);
         }
         return list;

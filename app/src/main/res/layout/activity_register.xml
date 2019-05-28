@@ -1,83 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:stretchColumns="1">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:background="#fff">
 
-    <TableRow>
-        <TextView
-            android:text="昵称："
-            android:textSize="24sp"
-            android:layout_width="match_parent"/>
-        <EditText
-            android:id="@+id/username"
-            android:textSize="24sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </EditText>
-    </TableRow>
-    <TableRow>
-        <TextView
-            android:text="密码："
-            android:textSize="24sp"
-            android:layout_width="match_parent"/>
-        <EditText
-            android:id="@+id/password"
-            android:textSize="24sp"
+        <!-- Registration Form -->
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword">
-        </EditText>
-    </TableRow>
-    <TableRow>
-        <TextView
-            android:text="性别："
-            android:textSize="24sp"
-            android:layout_width="match_parent"/>
-        <RadioGroup
-            android:id="@+id/sex_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RadioButton
-                android:id="@+id/male"
-                android:checked="true"
+            android:padding="10dip">
+
+            <!-- Full Name Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="昵称"/>
+            <EditText android:id="@+id/username"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip"
+                android:singleLine="true"
+                android:layout_marginBottom="20dip"/>
+
+            <!--  Email Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="邮箱"/>
+            <EditText android:id="@+id/email"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip"
+                android:singleLine="true"
+                android:layout_marginBottom="20dip"/>
+
+            <!-- Password Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="密码"/>
+            <EditText android:id="@+id/password"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:layout_marginTop="5dip"/>
+
+            <!-- sex Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="性别"/>
+            <RadioGroup
+                android:id="@+id/sex_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="男"/>
-            <RadioButton
-                android:id="@+id/female"
-                android:layout_width="match_parent"
+                android:layout_marginTop="5dip"
+                android:singleLine="true"
+                android:layout_marginBottom="20dip">
+                <RadioButton
+                    android:id="@+id/male"
+                    android:checked="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="男"/>
+                <RadioButton
+                    android:id="@+id/female"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="女"/>
+            </RadioGroup>
+
+            <!-- Age Label -->
+            <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="女"/>
-        </RadioGroup>
-    </TableRow>
-    <TableRow>
-        <TextView
-            android:text="年龄"
-            android:textSize="24sp"
-            android:layout_width="match_parent"/>
-        <Spinner
-            android:id="@+id/agespinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/age">
+                android:textColor="#372c24"
+                android:text="年龄"/>
+            <Spinner
+                android:id="@+id/agespinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip"
+                android:singleLine="true"
+                android:layout_marginBottom="20dip"
+                android:entries="@array/age"/>
 
-        </Spinner>
-    </TableRow>
-    <TableRow>
-        <TextView
-            android:text="职业"
-            android:textSize="24sp"
-            android:layout_width="match_parent"/>
-        <Spinner
-            android:id="@+id/occupationspinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/occupation"/>
-    </TableRow>
+            <!-- Occupation Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="职业"/>
+            <Spinner
+                android:id="@+id/occupationspinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/occupation"
+                android:layout_marginTop="5dip"
+                android:singleLine="true"
+                android:layout_marginBottom="20dip"/>
 
-    <Button
-        android:id="@+id/reg"
-        android:text="注册"
-        android:textSize="36dp"/>
-</TableLayout>
+            <!-- Register Button -->
+            <Button android:id="@+id/reg"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="新账户注册"/>
+            <!-- Link to Login Screen -->
+            <Button android:id="@+id/login"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dip"
+                android:layout_marginBottom="40dip"
+                android:text="已有账户!点此登录"
+                android:gravity="center"
+                android:textSize="20dip"
+                android:background="#00000000"
+                android:textColor="#025f7c"/>
+
+        </LinearLayout>
+        <!-- Registration Form Ends -->
+
+
+    </RelativeLayout>
+</ScrollView>

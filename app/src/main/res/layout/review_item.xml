@@ -4,14 +4,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+
         <TextView
             android:id="@+id/username"
-            android:layout_marginTop="4dp"
-            android:paddingLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#00008B"
-            android:text="这是用户名："/>
+            android:layout_marginTop="4dp"
+            android:paddingLeft="10dp"
+            android:text="这是用户名："
+            android:textColor="#00008B" />
         <TextView
             android:id="@+id/content"
             android:paddingLeft="10dp"
