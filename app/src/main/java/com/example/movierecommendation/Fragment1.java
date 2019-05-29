@@ -14,13 +14,20 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.Database.Copy;
 import com.example.movierecommendation.R;
 import com.example.utils.DbManager;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerListener;
+import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,68 +43,46 @@ public class Fragment1 extends Fragment {
     String moviename=null;
     String rating=null;
 
+    public LinearLayout linearLayout;
+
+    //图片轮播
+    private  Banner banner;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.page1, container, false);
-        //在数据库中查询改类别，显示该类别的电影
-        data=new ArrayList<Map<String,String>>();
-        Copy copy=new Copy();
-        db=copy.openDatabase(getContext());
-        String sql = "select * from movierating order by rating desc";
-        Cursor cursor = DbManager.selectDataBySQL(db, sql, null);
-        Map<String, String> map;
-        int count=0;
-        while(cursor.moveToNext()) {
-            //从movierating表读评分
-            rating=cursor.getString(cursor.getColumnIndex("rating"));
-            int movieid = cursor.getInt(cursor.getColumnIndex("movieid"));
-            String sql2 = "select * from movies where movieid=?";
-            Cursor cursor2 = DbManager.selectDataBySQL(db, sql2, new String[]{String.valueOf(movieid)});
-            while (cursor2.moveToNext()) {
-                moviename = cursor2.getString(cursor2.getColumnIndex("moviename"));
-            }
-            Log.i("tag", moviename+"  "+rating);
-            map = new HashMap<String, String>();
 
+        linearLayout=view.findViewById(R.id.hhh);
 
-            map.put("moviename", moviename);
-            map.put("movieid", movieid + "");
-            map.put("rating", rating);
-            //cursor1.close();
-            data.add(map);
-            count++;
-            if(count==30)
-                break;
+        banner = (Banner) view.findViewById(R.id.banner);
+        //选择banner的模式
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
+
+        int imageresource[]=new int[]{R.drawable.i1,R.drawable.i2,R.drawable.i4,R.drawable.i5};
+        String titles[]=new String[]{"电影1","电影2","电影3","电影4"};
+
+        List<Integer> imagelist=new ArrayList<>();
+        List<String>  titlelist=new ArrayList<>();
+        for(int i=0;i<imageresource.length;i++){
+            imagelist.add(imageresource[i]);
+            titlelist.add(titles[i]);
+            banner.setImageLoader(new ImageLoader() {
+                @Override
+                public void displayImage(Context context, Object path, ImageView imageView) {
+                    Glide.with(Fragment1.this).load(path).into(imageView);
+                }
+            });
+            banner.setBannerTitles(titlelist);
+            banner.setDelayTime(3000);//轮播时间
+            banner.setImages(imagelist);//图片资源
+            banner.start();
         }
-        db.close();
-        cursor.close();
 
-        lv=(ListView) view.findViewById(R.id.movielist);
-        adapter=new Fragment1.MyAdapter(getContext());
-        lv.setAdapter(adapter);
-
-        //添加点击事件的监听
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        banner.setOnBannerListener(new OnBannerListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //通过view获取其内部的组件，进而进行操作
-                String text = (String) ((TextView)view.findViewById(R.id.movieid)).getText();
-                int movieid=Integer.parseInt(text);
-
-                Bundle b=new Bundle();
-                b.putString("rating",rating);
-                b.putInt("movieid",movieid);
-
-
-                Intent intent = new Intent(getActivity(), MovieActivity.class);
-                intent.putExtra("rating",rating);//到时候再替换
-                intent.putExtra("movieid",movieid);//到时候再替换
-                startActivity(intent);
-
-                //大多数情况下，position和id相同，并且都从0开始
-//                String showText = "点击第" + position + "项，文本内容为：" + text + "，ID为：" + id;
-//                Toast.makeText(CategoryActivity.this, showText,Toast.LENGTH_LONG).show();
+            public void OnBannerClick(int position) {
+                Log.i("tag", "你点了第"+position+"张轮播图");
             }
         });
         return view;
