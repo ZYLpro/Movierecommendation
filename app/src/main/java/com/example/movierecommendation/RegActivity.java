@@ -129,13 +129,14 @@ public class RegActivity extends Activity {
                         String sql = "select * from loginusers";
                         Cursor cursor = DbManager.selectDataBySQL(db, sql, null);
                         List<Loginuser> list = DbManager.cursorToList(cursor);
-                        String insert = "insert into loginusers values(" + String.valueOf(list.size() + 1) + ",\'" + username + "\',\'" + password + "\'," + String.valueOf(sex) + "," + String.valueOf(age) + ", "+String.valueOf(occupation)+ ",\' "+email+"\')";
+                        String insert = "insert into loginusers values(" + String.valueOf(list.size() + 1) + ",\'" + username + "\',\'" + password + "\'," + String.valueOf(sex) + "," + String.valueOf(age) + ", "+String.valueOf(occupation)+ ",\' "+email+"\',0)";
                         db.execSQL(insert);
                         for (Loginuser l : list) {
                             Log.i("tag", l.toString());
                         }
                         Myapplication myapp = (Myapplication) RegActivity.this.getApplication();
                         myapp.setname(username);
+                        myapp.setUserid(list.size()+1);
                         db.close();
                         Toast.makeText(RegActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(RegActivity.this, MainActivity.class);

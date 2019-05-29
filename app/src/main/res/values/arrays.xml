@@ -32,4 +32,11 @@
         <item>unemployed</item>
         <item>writer</item>
     </string-array>
+    <string-array name="feedback_type" translatable="false">
+        <item>无法登陆</item>
+        <item>加载速度过慢</item>
+        <item>电影内容更新不及时</item>
+        <item>无法更新信息</item>
+        <item>其他</item>
+    </string-array>
 </resources>

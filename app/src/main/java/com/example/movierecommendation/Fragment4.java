@@ -26,6 +26,7 @@ public class Fragment4 extends Fragment {
     private SQLiteDatabase db;
     private int count,columnNum;
     private String moviename;
+    private String username;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -38,14 +39,19 @@ public class Fragment4 extends Fragment {
 
         String sql="select * from reviews";
         Cursor cursor = DbManager.selectDataBySQL(db,sql,null);
-        columnNum=cursor.getCount();
         cursor.moveToLast();
+        columnNum=cursor.getCount();
         String[] reviewContent=new String[columnNum];
         String[] reviewName=new String[columnNum];
         count=0;
         while(cursor.moveToPrevious()) {
             String content = cursor.getString(cursor.getColumnIndex("content"));
-            String name = cursor.getString(cursor.getColumnIndex("name"));
+            String userid = cursor.getString(cursor.getColumnIndex("userid"));
+            String sql3 = "select * from loginusers where userid=?";
+            Cursor cursor3 = DbManager.selectDataBySQL(db, sql3, new String[]{String.valueOf(userid)});
+            while(cursor3.moveToNext()){
+                username = cursor3.getString(cursor3.getColumnIndex("username"));
+            }
             int movieid = cursor.getInt(cursor.getColumnIndex("movieid"));
 
             String sql4 = "select * from movies where movieid=?";
@@ -55,7 +61,7 @@ public class Fragment4 extends Fragment {
             }
             Log.i("tag",moviename);
             reviewContent[count] = content;
-            reviewName[count] = name+"            "+moviename;
+            reviewName[count] = username+"            "+moviename;
             count++;
             if (count == columnNum)
                 break;

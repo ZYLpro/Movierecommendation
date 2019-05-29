@@ -66,6 +66,7 @@ public class MovieActivity extends AppCompatActivity {
 
         movieid=b.getInt("movieid");
         ratingstring=b.getString("rating");
+        Log.i("tag", String.valueOf(movieid));
 
         //填写上方信息
 

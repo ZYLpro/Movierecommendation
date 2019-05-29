@@ -40,6 +40,8 @@ public class FindPasswordActivity extends Activity {
                 EditText editEmail=(EditText)findViewById(R.id.email) ;
                 String username=editUser.getText().toString();
                 String email=editEmail.getText().toString();
+                Log.i("tag", username);
+                Log.i("tag", email);
                 if(login(username,email)){
                     //用完数据库一定要关闭
                     Myapplication myapp = (Myapplication) FindPasswordActivity.this.getApplication();
@@ -65,17 +67,13 @@ public class FindPasswordActivity extends Activity {
         });
     }
     public boolean login(String username,String email) {
-        String sql = "select * from loginusers where username=? and email=?";
-        Cursor cursor = DbManager.selectDataBySQL(db,sql,new String[]{username,email});
-        List<Loginuser> list=DbManager.cursorToList(cursor);
-        for(Loginuser l:list){
-            Log.i("tag", l.toString());
+        String sql = "select * from loginusers where username=?";
+        Cursor cursor = DbManager.selectDataBySQL(db,sql,new String[]{username});
+        while(cursor.moveToNext()){
+            if(cursor.getString(cursor.getColumnIndex("email")).equals(email)){
+                return true;
+            }
         }
-        if (cursor.moveToFirst()) {
-            cursor.close();
-            return true;
-        }
-        db.close();
         return false;
     }
 

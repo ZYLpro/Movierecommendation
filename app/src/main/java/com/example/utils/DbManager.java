@@ -41,8 +41,9 @@ public class DbManager {
             String email = cursor.getString(cursor.getColumnIndex("email"));
             int gender = cursor.getInt(cursor.getColumnIndex("gender"));
             int age = cursor.getInt(cursor.getColumnIndex("age"));
+            int logintime = cursor.getInt(cursor.getColumnIndex("logintime"));
             int occupation = cursor.getInt(cursor.getColumnIndex("occupation"));
-            Loginuser loginuser = new Loginuser(userid, username, password,gender,age,occupation,email);
+            Loginuser loginuser = new Loginuser(userid, username, password,gender,age,occupation,email,logintime);
             list.add(loginuser);
         }
         return list;

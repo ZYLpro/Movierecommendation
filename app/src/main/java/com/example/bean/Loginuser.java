@@ -8,8 +8,9 @@ public class Loginuser {
     private int age;
     private int occupation;
     private String email;
+    private int logintime;
 
-    public Loginuser(int userid, String username, String password, int gender, int age, int occupation, String email) {
+    public Loginuser(int userid, String username, String password, int gender, int age, int occupation, String email,int logintime) {
         this.userid = userid;
         this.username = username;
         this.password = password;
@@ -17,6 +18,7 @@ public class Loginuser {
         this.age = age;
         this.occupation = occupation;
         this.email = email;
+        this.logintime=logintime;
     }
 
     @Override
@@ -27,6 +29,7 @@ public class Loginuser {
                 ", password='" + password +
                 ", gender=" + gender +
                 ", age=" + age +
+                ", logintime=" + logintime +
                 ", email=" + email +
                 ", occupation=" + occupation +
                 '}';
@@ -86,5 +89,13 @@ public class Loginuser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getLogintime() {
+        return logintime;
+    }
+
+    public void setLogintime(int logintime) {
+        this.logintime = logintime;
     }
 }

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.Database.Copy;
@@ -29,6 +30,7 @@ public class AddReviewActivity extends AppCompatActivity {
     private RatingBar ratingBar;
     private EditText editText;
     private Button button;
+    private TextView myuser;
 
     private float rating;
     private String content;
@@ -58,6 +60,10 @@ public class AddReviewActivity extends AppCompatActivity {
         ratingBar=findViewById(R.id.ratingBar);
         editText=findViewById(R.id.reviewcontent);
         button=findViewById(R.id.submit);
+        myuser=findViewById(R.id.username);
+
+        //赋值
+        myuser.setText("    "+myapp.getname());
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -94,7 +100,7 @@ public class AddReviewActivity extends AppCompatActivity {
                 }
                 Log.i("tag", String.valueOf(userid));
 
-                String insert = "insert into reviews values(" + String.valueOf(id+1) + "," + userid  +","+  movieid + ",\'" + content + "\',\'" + time+"\',\'"+myapp.getname()+"\')";
+                String insert = "insert into reviews values(" + String.valueOf(id+1) + "," + userid  +","+  movieid + ",\'" + content + "\',\'" + time+"\')";
                 db.execSQL(insert);
 
 

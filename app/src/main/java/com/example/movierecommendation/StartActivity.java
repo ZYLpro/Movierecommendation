@@ -40,10 +40,12 @@ public class StartActivity extends Activity {
                 EditText editPass=(EditText)findViewById(R.id.password) ;
                 String username=editUser.getText().toString();
                 String password=editPass.getText().toString();
-                if(login(username,password)){
+                if(login(username,password)!=0){
                     //用完数据库一定要关闭
                     Myapplication myapp = (Myapplication) StartActivity.this.getApplication();
                     myapp.setname(username);
+                    myapp.setUserid(login(username,password));
+                    Log.i("tag", "userid="+String.valueOf(myapp.getUserid()));
                     db.close();
 
                     Intent intent = new Intent(StartActivity.this,MainActivity.class);
@@ -74,7 +76,7 @@ public class StartActivity extends Activity {
             }
         });
     }
-    public boolean login(String username,String password) {
+    public int login(String username,String password) {
         String sql = "select * from loginusers where username=? and password=?";
         Cursor cursor = DbManager.selectDataBySQL(db,sql,new String[]{username,password});
         List<Loginuser> list=DbManager.cursorToList(cursor);
@@ -82,11 +84,14 @@ public class StartActivity extends Activity {
             Log.i("tag", l.toString());
         }
         if (cursor.moveToFirst()) {
-            cursor.close();
-            return true;
+            int logintime=cursor.getInt(cursor.getColumnIndex("logintime"));
+            int userid=cursor.getInt(cursor.getColumnIndex("userid"));
+            String update = "update loginusers set logintime="  + String.valueOf(logintime+1)+" where username=\'"+username+"\'";
+            DbManager.execSQL(db,update);
+            Log.i("tag",String.valueOf(userid));
+            return userid;
         }
-        db.close();
-        return false;
+        return 0;
     }
 
 

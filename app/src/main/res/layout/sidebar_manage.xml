@@ -9,27 +9,34 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="设置"
+        android:text="系统设置"
         android:textColor="#000"
-        android:textSize="40sp">
+        android:textSize="32sp">
     </TextView>
     <Button
         android:id="@+id/change_information"
-        android:layout_marginTop="020dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
         android:text="更改信息"
-        android:textSize="32dp"
-        android:gravity="left"/>
+        android:textSize="24dp"
+        android:gravity="center"/>
     <Button
         android:id="@+id/change_theme"
-        android:layout_marginTop="020dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
         android:text="更改主题"
-        android:textSize="32dp"
-        android:gravity="left"/>
+        android:textSize="24dp"
+        android:gravity="center"/>
     <Button
         android:id="@+id/account_manage"
-        android:layout_marginTop="020dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
         android:text="切换账户"
-        android:textSize="32dp"
-        android:gravity="left"/>
+        android:textSize="24dp"
+        android:gravity="center"/>
 </TableLayout>

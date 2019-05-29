@@ -5,6 +5,7 @@ import android.widget.ImageView;
 
 public class Myapplication extends Application {
     private String NICKNAME = "123";
+    private int USERID = 0;
     private ImageView AVATAR = null;
     @Override
     public void onCreate() {
@@ -18,4 +19,10 @@ public class Myapplication extends Application {
     }
     public void setimage(ImageView image) {AVATAR = image; }
     public ImageView getimage() { return AVATAR; }
+    public void setUserid(int userid){
+        USERID = userid;
+    }
+    public int getUserid(){
+        return USERID;
+    }
 }
